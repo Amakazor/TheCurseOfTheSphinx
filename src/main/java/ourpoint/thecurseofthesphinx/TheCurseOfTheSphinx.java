@@ -15,12 +15,14 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ourpoint.thecurseofthesphinx.init.TCOTSInit;
 
 import java.util.stream.Collectors;
 
 @Mod ("thecurseofthesphinx")
 public class TheCurseOfTheSphinx
 {
+    public static final String MOD_ID = "thecurseofthesphinx";
     private static final Logger LOGGER = LogManager.getLogger();
 
     public TheCurseOfTheSphinx()
@@ -30,6 +32,8 @@ public class TheCurseOfTheSphinx
         //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
+        TCOTSInit.Init(FMLJavaModLoadingContext.get().getModEventBus());
+
         //Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -37,14 +41,12 @@ public class TheCurseOfTheSphinx
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        LOGGER.info("The Sphinx is watching");
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)
     {
         //do something that can only be done on the client
-        LOGGER.info("The Sphinx is watching");
     }
 
    /* private void enqueueIMC(final InterModEnqueueEvent event)
