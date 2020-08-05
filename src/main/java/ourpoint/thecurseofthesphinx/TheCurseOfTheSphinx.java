@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class TheCurseOfTheSphinx
 {
     public static final String MOD_ID = "thecurseofthesphinx";
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public TheCurseOfTheSphinx()
     {
