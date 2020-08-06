@@ -2,6 +2,7 @@ package ourpoint.thecurseofthesphinx;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -20,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import ourpoint.thecurseofthesphinx.entity.MummyEntity;
 import ourpoint.thecurseofthesphinx.init.TCOTSEntityTypes;
 import ourpoint.thecurseofthesphinx.init.TCOTSInit;
+import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
 
 import java.util.stream.Collectors;
 
@@ -51,6 +53,12 @@ public class TheCurseOfTheSphinx
     private void doClientStuff(final FMLClientSetupEvent event)
     {
         //do something that can only be done on the client
+    }
+
+    @SubscribeEvent
+    public static void onRegisterEntities(final RegistryEvent.Register<EntityType<?>> event)
+    {
+        TCOTSSpawnEggItem.initSpawnEggs();
     }
 
    /* private void enqueueIMC(final InterModEnqueueEvent event)
