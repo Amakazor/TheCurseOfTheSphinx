@@ -15,6 +15,6 @@ public class TCOTSEntityTypes
 
     public static final RegistryObject<EntityType<MummyEntity>> MUMMY_ENTITY = ENTITY_TYPES.register("mummy",
             () -> EntityType.Builder.create(MummyEntity::new, EntityClassification.MONSTER)
-                .size(1.0f, 2.0f)
+                .size(0.6F, 1.95F)
                 .build(new ResourceLocation(TheCurseOfTheSphinx.MOD_ID, "mummy").toString()));
 }
