@@ -17,6 +17,9 @@ public class TCOTSItems
             () -> new TCOTSSpawnEggItem(TCOTSEntityTypes.MUMMY_ENTITY, 0xA8966C, 0xAE1225,
                     new Item.Properties().group(ItemGroup.MATERIALS).maxStackSize(16)));
 
+    public static final RegistryObject<Item> ANKH_PART = ITEMS.register("ankh_part",
+            () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
+
     //Block Items
 
     //Tools
