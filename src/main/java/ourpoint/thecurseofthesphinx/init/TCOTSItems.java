@@ -19,6 +19,8 @@ public class TCOTSItems
 
     public static final RegistryObject<Item> ANKH_PART = ITEMS.register("ankh_part",
             () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
+    public static final RegistryObject<Item> ANKH = ITEMS.register("ankh",
+            () -> new Item(new Item.Properties().group(ItemGroup.MATERIALS)));
 
     //Block Items
 

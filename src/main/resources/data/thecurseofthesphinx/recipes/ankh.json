@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " p ",
+    "ggg",
+    " g "
+  ],
+  "key":
+  {
+    "g":
+    {
+      "tag": "forge:ingots/gold"
+    },
+    "p":
+    {
+      "item": "thecurseofthesphinx:ankh_part"
+    }
+  },
+  "result":
+  {
+    "item": "thecurseofthesphinx:ankh",
+    "count": 1
+  }
+}
