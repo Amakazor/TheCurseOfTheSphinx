@@ -25,7 +25,7 @@ import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
 
 import java.util.stream.Collectors;
 
-@Mod ("thecurseofthesphinx")
+@Mod (TheCurseOfTheSphinx.MOD_ID)
 public class TheCurseOfTheSphinx
 {
     public static final String MOD_ID = "thecurseofthesphinx";
