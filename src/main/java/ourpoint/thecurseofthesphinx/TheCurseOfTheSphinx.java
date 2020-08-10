@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,6 +23,7 @@ import org.apache.logging.log4j.Logger;
 import ourpoint.thecurseofthesphinx.entity.MummyEntity;
 import ourpoint.thecurseofthesphinx.init.TCOTSEntityTypes;
 import ourpoint.thecurseofthesphinx.init.TCOTSInit;
+import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
 
 import java.util.stream.Collectors;
@@ -54,6 +57,16 @@ public class TheCurseOfTheSphinx
     {
         //do something that can only be done on the client
     }
+
+    //Creative Tab
+    public static final ItemGroup TAB = new ItemGroup("TCOTSTab")
+    {
+        @Override
+        public ItemStack createIcon()
+        {
+            return new ItemStack(TCOTSItems.ANKH.get());
+        }
+    };
 
    /* private void enqueueIMC(final InterModEnqueueEvent event)
     {
