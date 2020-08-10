@@ -1,0 +1,23 @@
+{
+  "replace":false,
+  "values":
+  [
+    "thecurseofthesphinx:bandage_block",
+    "thecurseofthesphinx:bandage_block_black",
+    "thecurseofthesphinx:bandage_block_blue",
+    "thecurseofthesphinx:bandage_block_brown",
+    "thecurseofthesphinx:bandage_block_cyan",
+    "thecurseofthesphinx:bandage_block_gray",
+    "thecurseofthesphinx:bandage_block_green",
+    "thecurseofthesphinx:bandage_block_light_blue",
+    "thecurseofthesphinx:bandage_block_light_gray",
+    "thecurseofthesphinx:bandage_block_lime",
+    "thecurseofthesphinx:bandage_block_magenta",
+    "thecurseofthesphinx:bandage_block_orange",
+    "thecurseofthesphinx:bandage_block_pink",
+    "thecurseofthesphinx:bandage_block_purple",
+    "thecurseofthesphinx:bandage_block_red",
+    "thecurseofthesphinx:bandage_block_white",
+    "thecurseofthesphinx:bandage_block_yellow"
+  ]
+}

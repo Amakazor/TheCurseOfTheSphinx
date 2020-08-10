@@ -1,7 +1,7 @@
 package ourpoint.thecurseofthesphinx.init;
 
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -25,6 +25,41 @@ public class TCOTSItems
             () -> new Item(new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
 
     //Block Items
+        //Bandage Blocks
+    public static final RegistryObject<Item> BANDAGE_BLOCK_ITEM = ITEMS.register("bandage_block",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_WHITE_ITEM = ITEMS.register("bandage_block_white",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_WHITE.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_ORANGE_ITEM = ITEMS.register("bandage_block_orange",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_ORANGE.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_MAGENTA_ITEM = ITEMS.register("bandage_block_magenta",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_MAGENTA.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_LIGHT_BLUE_ITEM = ITEMS.register("bandage_block_light_blue",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_LIGHT_BLUE.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_YELLOW_ITEM = ITEMS.register("bandage_block_yellow",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_YELLOW.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_LIME_ITEM = ITEMS.register("bandage_block_lime",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_LIME.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_PINK_ITEM = ITEMS.register("bandage_block_pink",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_PINK.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_GRAY_ITEM = ITEMS.register("bandage_block_gray",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_GRAY.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_LIGHT_GRAY_ITEM = ITEMS.register("bandage_block_light_gray",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_LIGHT_GRAY.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_CYAN_ITEM = ITEMS.register("bandage_block_cyan",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_CYAN.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_PURPLE_ITEM = ITEMS.register("bandage_block_purple",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_PURPLE.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_BLUE_ITEM = ITEMS.register("bandage_block_blue",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_BLUE.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_BROWN_ITEM = ITEMS.register("bandage_block_brown",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_BROWN.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_GREEN_ITEM = ITEMS.register("bandage_block_green",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_GREEN.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_RED_ITEM = ITEMS.register("bandage_block_red",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_RED.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE_BLOCK_BLACK_ITEM = ITEMS.register("bandage_block_black",
+            () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_BLACK.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
 
     //Tools
 

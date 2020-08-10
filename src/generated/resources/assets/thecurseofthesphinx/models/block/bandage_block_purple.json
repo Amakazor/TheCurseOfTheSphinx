@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "thecurseofthesphinx:block/bandage_block_purple"
+  }
+}

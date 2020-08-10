@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xdx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "tag": "thecurseofthesphinx:bandage_block"
+    },
+    "d": {
+      "tag": "forge:dyes/cyan"
+    }
+  },
+  "result": {
+    "item": "thecurseofthesphinx:bandage_block_cyan",
+    "count": 8
+  }
+}
