@@ -55,12 +55,6 @@ public class TheCurseOfTheSphinx
         //do something that can only be done on the client
     }
 
-    @SubscribeEvent
-    public static void onRegisterEntities(final RegistryEvent.Register<EntityType<?>> event)
-    {
-        TCOTSSpawnEggItem.initSpawnEggs();
-    }
-
    /* private void enqueueIMC(final InterModEnqueueEvent event)
     {
         //some example code to dispatch IMC to another mod);
