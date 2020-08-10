@@ -2,6 +2,6 @@
   "parent": "item/generated",
   "textures":
   {
-    "layer0": "thecurseofthesphinx:items/bandage"
+    "layer0": "thecurseofthesphinx:item/bandage"
   }
 }
