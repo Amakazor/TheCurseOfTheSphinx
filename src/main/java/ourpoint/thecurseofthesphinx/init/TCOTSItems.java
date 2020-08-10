@@ -21,6 +21,8 @@ public class TCOTSItems
             () -> new Item(new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
     public static final RegistryObject<Item> ANKH = ITEMS.register("ankh",
             () -> new Item(new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage",
+            () -> new Item(new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
 
     //Block Items
 
