@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thecurseofthesphinx:bandage_block"
+    ]
+  },
+  "criteria": {
+    "has_bandage": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "thecurseofthesphinx:bandage"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thecurseofthesphinx:bandage_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bandage",
+      "has_the_recipe"
+    ]
+  ]
+}
