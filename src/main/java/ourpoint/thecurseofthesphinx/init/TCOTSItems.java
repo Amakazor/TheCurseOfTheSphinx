@@ -1,11 +1,14 @@
 package ourpoint.thecurseofthesphinx.init;
 
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
+import ourpoint.thecurseofthesphinx.armor.TCOTSArmorMaterial;
 import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
 
 public class TCOTSItems
@@ -66,4 +69,12 @@ public class TCOTSItems
     //Weapons
 
     //Armor
+    public static final RegistryObject<ArmorItem> BANDAGE_HELMET = ITEMS.register("bandage_helmet",
+            () -> new ArmorItem(TCOTSArmorMaterial.BANDAGE, EquipmentSlotType.HEAD, new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<ArmorItem> BANDAGE_CHESTPLATE = ITEMS.register("bandage_chestplate",
+            () -> new ArmorItem(TCOTSArmorMaterial.BANDAGE, EquipmentSlotType.CHEST, new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<ArmorItem> BANDAGE_LEGGINGS = ITEMS.register("bandage_leggings",
+            () -> new ArmorItem(TCOTSArmorMaterial.BANDAGE, EquipmentSlotType.LEGS, new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<ArmorItem> BANDAGE_BOOTS = ITEMS.register("bandage_boots",
+            () -> new ArmorItem(TCOTSArmorMaterial.BANDAGE, EquipmentSlotType.FEET, new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
 }

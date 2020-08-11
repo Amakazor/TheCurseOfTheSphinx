@@ -17,6 +17,7 @@ public class TCOTSDataGenerators
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
         generator.addProvider(new TCOTSBlockstateGenerator(generator, TheCurseOfTheSphinx.MOD_ID, existingFileHelper));
+        generator.addProvider(new TCOTSItemModelGenerator(generator, TheCurseOfTheSphinx.MOD_ID, existingFileHelper));
         generator.addProvider(new TCOTSRecipeGenerator(generator));
     }
 }

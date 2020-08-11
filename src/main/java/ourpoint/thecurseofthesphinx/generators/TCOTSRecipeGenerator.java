@@ -24,10 +24,11 @@ public class TCOTSRecipeGenerator extends RecipeProvider
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer)
     {
-        generateBandageRecipes(consumer);
+        registerBandageRecipes(consumer);
+        registerArmorRecipes(consumer);
     }
 
-    private void generateBandageRecipes(Consumer<IFinishedRecipe> consumer)
+    private void registerBandageRecipes(Consumer<IFinishedRecipe> consumer)
     {
         class BandageDyePair
         {
@@ -83,6 +84,39 @@ public class TCOTSRecipeGenerator extends RecipeProvider
         ShapedRecipeBuilder.shapedRecipe((TCOTSBlocks.BANDAGE_BLOCK.get()))
                 .patternLine("xx ")
                 .patternLine("xx ")
+                .key('x', TCOTSItems.BANDAGE.get())
+                .addCriterion("has_bandage", hasItem(TCOTSItems.BANDAGE.get()))
+                .build(consumer);
+    }
+
+    private void registerArmorRecipes(Consumer<IFinishedRecipe> consumer)
+    {
+        ShapedRecipeBuilder.shapedRecipe(TCOTSItems.BANDAGE_HELMET.get())
+                .patternLine("xxx")
+                .patternLine("x x")
+                .key('x', TCOTSItems.BANDAGE.get())
+                .addCriterion("has_bandage", hasItem(TCOTSItems.BANDAGE.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(TCOTSItems.BANDAGE_BOOTS.get())
+                .patternLine("x x")
+                .patternLine("x x")
+                .key('x', TCOTSItems.BANDAGE.get())
+                .addCriterion("has_bandage", hasItem(TCOTSItems.BANDAGE.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(TCOTSItems.BANDAGE_LEGGINGS.get())
+                .patternLine("xxx")
+                .patternLine("x x")
+                .patternLine("x x")
+                .key('x', TCOTSItems.BANDAGE.get())
+                .addCriterion("has_bandage", hasItem(TCOTSItems.BANDAGE.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(TCOTSItems.BANDAGE_CHESTPLATE.get())
+                .patternLine("x x")
+                .patternLine("xxx")
+                .patternLine("xxx")
                 .key('x', TCOTSItems.BANDAGE.get())
                 .addCriterion("has_bandage", hasItem(TCOTSItems.BANDAGE.get()))
                 .build(consumer);
