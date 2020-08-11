@@ -82,8 +82,8 @@ public class TCOTSRecipeGenerator extends RecipeProvider
         }
 
         ShapedRecipeBuilder.shapedRecipe((TCOTSBlocks.BANDAGE_BLOCK.get()))
-                .patternLine("xx ")
-                .patternLine("xx ")
+                .patternLine("xx")
+                .patternLine("xx")
                 .key('x', TCOTSItems.BANDAGE.get())
                 .addCriterion("has_bandage", hasItem(TCOTSItems.BANDAGE.get()))
                 .build(consumer);
