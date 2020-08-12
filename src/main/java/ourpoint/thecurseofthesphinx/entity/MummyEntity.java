@@ -14,10 +14,12 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 
 public class MummyEntity extends ZombieEntity
@@ -78,7 +80,7 @@ public class MummyEntity extends ZombieEntity
             this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STICK));
         }
 
-        float difficulty_calculated = ((difficulty.getAdditionalDifficulty()-0.75F)/6.0F);
+        float difficulty_calculated = MathHelper.clamp((difficulty.getAdditionalDifficulty()-0.75F)/4.0F, 0.25F, 1.0F);
 
         for (EquipmentSlotType equipmentslottype : EquipmentSlotType.values())
         {
