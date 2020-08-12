@@ -18,7 +18,6 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 
 public class MummyEntity extends ZombieEntity
@@ -119,6 +118,7 @@ public class MummyEntity extends ZombieEntity
     }
 
     //attack
+    @Override
     public boolean attackEntityAsMob(Entity entityIn)
     {
         boolean flag = super.attackEntityAsMob(entityIn);
@@ -132,21 +132,25 @@ public class MummyEntity extends ZombieEntity
     }
 
     //sound
+    @Override
     protected SoundEvent getAmbientSound()
     {
         return SoundEvents.ENTITY_HUSK_AMBIENT;
     }
 
+    @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn)
     {
         return SoundEvents.ENTITY_HUSK_HURT;
     }
 
+    @Override
     protected SoundEvent getDeathSound()
     {
         return SoundEvents.ENTITY_HUSK_DEATH;
     }
 
+    @Override
     protected SoundEvent getStepSound()
     {
         return SoundEvents.ENTITY_HUSK_STEP;
