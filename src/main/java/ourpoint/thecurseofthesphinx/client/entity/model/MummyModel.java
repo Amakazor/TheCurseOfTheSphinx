@@ -103,9 +103,11 @@ public class MummyModel<T extends LivingEntity> extends BipedModel<T>
         this.bipedRightLeg.rotateAngleZ = 0.0F;
         this.bipedLeftLeg.rotateAngleZ = 0.0F;
 
-        this.bipedBody.rotateAngleZ = MathHelper.cos(limbSwing * 0.6662F) * 0.5F * limbSwingAmount;
-        this.bipedLeftArm.rotationPointX = MathHelper.cos(limbSwing * 0.6662F) * 1.0F * limbSwingAmount + 6.0F;
-        this.bipedRightArm.rotationPointX = MathHelper.cos(limbSwing * 0.6662F) * 1.0F * limbSwingAmount - 6.0F;
+        float limbSwingAmountClamped = MathHelper.clamp(limbSwingAmount, -0.2F, 0.2F);
+
+        this.bipedBody.rotateAngleZ = MathHelper.cos(limbSwing * 0.6662F) * 0.5F * limbSwingAmountClamped;
+        this.bipedLeftArm.rotationPointX = MathHelper.cos(limbSwing * 0.6662F) * limbSwingAmountClamped + 6.0F;
+        this.bipedRightArm.rotationPointX = MathHelper.cos(limbSwing * 0.6662F) * limbSwingAmountClamped - 6.0F;
     }
 
     public void translateHand(HandSide sideIn, MatrixStack matrixStackIn) 
