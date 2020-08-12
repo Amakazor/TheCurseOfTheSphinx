@@ -1,15 +1,14 @@
 package ourpoint.thecurseofthesphinx.entity;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
@@ -17,7 +16,10 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
+import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 
 public class MummyEntity extends ZombieEntity
 {
@@ -61,6 +63,13 @@ public class MummyEntity extends ZombieEntity
     public void setChild(boolean childZombie)
     {}
 
+    @Override
+    public ILivingEntityData onInitialSpawn(IWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag)
+    {
+        this.setEquipmentBasedOnDifficulty(difficultyIn);
+        return spawnDataIn;
+    }
+
     //equipment
     @Override
     protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
@@ -70,6 +79,43 @@ public class MummyEntity extends ZombieEntity
             this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STICK));
         }
 
+        float difficulty_calculated = ((difficulty.getAdditionalDifficulty()-0.75F)/6.0F);
+
+        for (EquipmentSlotType equipmentslottype : EquipmentSlotType.values())
+        {
+            if (equipmentslottype.getSlotType() == EquipmentSlotType.Group.ARMOR)
+            {
+                ItemStack itemStack = this.getItemStackFromSlot(equipmentslottype);
+                if (itemStack.isEmpty())
+                {
+                    if (this.rand.nextFloat() < difficulty_calculated * 1.25F)
+                    {
+                        Item item = getArmor(equipmentslottype);
+                        if (item != null)
+                        {
+                            this.setItemStackToSlot(equipmentslottype, new ItemStack(item));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public static Item getArmor(EquipmentSlotType slotIn)
+    {
+        switch (slotIn)
+        {
+            case HEAD:
+                return TCOTSItems.BANDAGE_HELMET.get();
+            case CHEST:
+                return TCOTSItems.BANDAGE_CHESTPLATE.get();
+            case LEGS:
+                return TCOTSItems.BANDAGE_LEGGINGS.get();
+            case FEET:
+                return TCOTSItems.BANDAGE_BOOTS.get();
+            default:
+                return null;
+        }
     }
 
     //attack
