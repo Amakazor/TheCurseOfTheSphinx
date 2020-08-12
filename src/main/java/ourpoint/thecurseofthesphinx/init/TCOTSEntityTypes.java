@@ -8,6 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.entity.MummyEntity;
+import ourpoint.thecurseofthesphinx.entity.ScarabEntity;
 
 public class TCOTSEntityTypes
 {
@@ -17,4 +18,9 @@ public class TCOTSEntityTypes
             () -> EntityType.Builder.create(MummyEntity::new, EntityClassification.MONSTER)
                 .size(0.6F, 1.95F)
                 .build(new ResourceLocation(TheCurseOfTheSphinx.MOD_ID, "mummy").toString()));
+
+    public static final RegistryObject<EntityType<ScarabEntity>> SCARAB_ENTITY = ENTITY_TYPES.register("scarab",
+            () -> EntityType.Builder.create(ScarabEntity::new, EntityClassification.CREATURE)
+                .size(0.8F, 0.5F)
+                .build(new ResourceLocation(TheCurseOfTheSphinx.MOD_ID, "scarab").toString()));
 }

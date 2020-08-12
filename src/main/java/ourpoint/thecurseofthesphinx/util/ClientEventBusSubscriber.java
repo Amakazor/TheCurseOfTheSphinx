@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.client.entity.render.MummyRenderer;
+import ourpoint.thecurseofthesphinx.client.entity.render.ScarabRenderer;
 import ourpoint.thecurseofthesphinx.init.TCOTSEntityTypes;
 import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
 
@@ -19,6 +20,7 @@ public class ClientEventBusSubscriber
     public static void onClientSetup(FMLClientSetupEvent event)
     {
         RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.MUMMY_ENTITY.get(), MummyRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.SCARAB_ENTITY.get(), ScarabRenderer::new);
     }
 
     @SubscribeEvent

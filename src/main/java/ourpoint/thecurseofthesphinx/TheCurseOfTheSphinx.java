@@ -12,6 +12,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ourpoint.thecurseofthesphinx.entity.MummyEntity;
+import ourpoint.thecurseofthesphinx.entity.ScarabEntity;
 import ourpoint.thecurseofthesphinx.init.TCOTSEntityTypes;
 import ourpoint.thecurseofthesphinx.init.TCOTSInit;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
@@ -39,6 +40,8 @@ public class TheCurseOfTheSphinx
         LOGGER.info("The Sphinx is watching");
         DeferredWorkQueue.runLater(
                 ()-> GlobalEntityTypeAttributes.put(TCOTSEntityTypes.MUMMY_ENTITY.get(), MummyEntity.setCustomAttributes().create()));
+        DeferredWorkQueue.runLater(
+                ()-> GlobalEntityTypeAttributes.put(TCOTSEntityTypes.SCARAB_ENTITY.get(), ScarabEntity.setCustomAttributes().create()));
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)

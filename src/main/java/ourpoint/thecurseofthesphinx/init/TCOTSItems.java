@@ -19,6 +19,9 @@ public class TCOTSItems
     public static final RegistryObject<TCOTSSpawnEggItem> MUMMY_SPAWN_EGG = ITEMS.register("mummy_spawn_egg",
             () -> new TCOTSSpawnEggItem(TCOTSEntityTypes.MUMMY_ENTITY, 0xA8966C, 0xAE1225,
                     new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+    public static final RegistryObject<TCOTSSpawnEggItem> SCARAB_SPAWN_EGG = ITEMS.register("scarab_spawn_egg",
+            () -> new TCOTSSpawnEggItem(TCOTSEntityTypes.SCARAB_ENTITY, 0xFFFFFF, 0x000000,
+                    new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
 
     public static final RegistryObject<Item> ANKH_PART = ITEMS.register("ankh_part",
             () -> new Item(new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
