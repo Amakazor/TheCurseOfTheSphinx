@@ -8,9 +8,9 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 public class TCOTSItemModelGenerator extends ItemModelProvider
 {
 
-    public TCOTSItemModelGenerator(DataGenerator generator, String modid, ExistingFileHelper existingFileHelper)
+    public TCOTSItemModelGenerator(DataGenerator generator, String modId, ExistingFileHelper existingFileHelper)
     {
-        super(generator, modid, existingFileHelper);
+        super(generator, modId, existingFileHelper);
     }
 
     @Override

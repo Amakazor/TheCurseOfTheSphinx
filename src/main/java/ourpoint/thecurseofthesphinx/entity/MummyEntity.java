@@ -19,8 +19,9 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
+
+import javax.annotation.Nonnull;
 
 public class MummyEntity extends ZombieEntity
 {
@@ -49,6 +50,7 @@ public class MummyEntity extends ZombieEntity
     }
 
     @Override
+    @Nonnull
     protected ItemStack getSkullDrop()
     {
         return ItemStack.EMPTY;
@@ -65,7 +67,7 @@ public class MummyEntity extends ZombieEntity
     {}
 
     @Override
-    public ILivingEntityData onInitialSpawn(IWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag)
+    public ILivingEntityData onInitialSpawn(@Nonnull IWorld worldIn, @Nonnull DifficultyInstance difficultyIn, @Nonnull SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag)
     {
         this.setEquipmentBasedOnDifficulty(difficultyIn);
         return spawnDataIn;
@@ -73,7 +75,7 @@ public class MummyEntity extends ZombieEntity
 
     //equipment
     @Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
+    protected void setEquipmentBasedOnDifficulty(@Nonnull DifficultyInstance difficulty)
     {
         if (this.rand.nextFloat() < (this.world.getDifficulty() == Difficulty.HARD ? 0.5F : 0.25F))
         {
@@ -121,7 +123,7 @@ public class MummyEntity extends ZombieEntity
 
     //attack
     @Override
-    public boolean attackEntityAsMob(Entity entityIn)
+    public boolean attackEntityAsMob(@Nonnull Entity entityIn)
     {
         boolean flag = super.attackEntityAsMob(entityIn);
         if (flag && this.getHeldItemMainhand().isEmpty() && entityIn instanceof LivingEntity)
@@ -141,7 +143,7 @@ public class MummyEntity extends ZombieEntity
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+    protected SoundEvent getHurtSound(@Nonnull DamageSource damageSourceIn)
     {
         return SoundEvents.ENTITY_HUSK_HURT;
     }
@@ -153,6 +155,7 @@ public class MummyEntity extends ZombieEntity
     }
 
     @Override
+    @Nonnull
     protected SoundEvent getStepSound()
     {
         return SoundEvents.ENTITY_HUSK_STEP;

@@ -9,6 +9,8 @@ import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.client.entity.model.MummyModel;
 import ourpoint.thecurseofthesphinx.entity.MummyEntity;
 
+import javax.annotation.Nonnull;
+
 public class MummyRenderer extends BipedRenderer<MummyEntity, MummyModel<MummyEntity>>
 {
     protected static final ResourceLocation TEXTURE = new ResourceLocation(TheCurseOfTheSphinx.MOD_ID, "textures/entity/mummy.png");
@@ -20,7 +22,8 @@ public class MummyRenderer extends BipedRenderer<MummyEntity, MummyModel<MummyEn
     }
 
     @Override
-    public ResourceLocation getEntityTexture(MummyEntity entity)
+    @Nonnull
+    public ResourceLocation getEntityTexture(@Nonnull MummyEntity entity)
     {
         return TEXTURE;
     }

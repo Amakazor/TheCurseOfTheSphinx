@@ -13,9 +13,9 @@ import java.util.List;
 public class TCOTSBlockstateGenerator extends BlockStateProvider
 {
 
-    public TCOTSBlockstateGenerator(DataGenerator gen, String modid, ExistingFileHelper exFileHelper)
+    public TCOTSBlockstateGenerator(DataGenerator gen, String modId, ExistingFileHelper exFileHelper)
     {
-        super(gen, modid, exFileHelper);
+        super(gen, modId, exFileHelper);
     }
 
     @Override

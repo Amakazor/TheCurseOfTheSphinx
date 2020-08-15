@@ -10,6 +10,7 @@ import net.minecraft.util.HandSide;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
+import javax.annotation.Nonnull;
 import java.util.function.Function;
 
 public class MummyModel<T extends LivingEntity> extends BipedModel<T>
@@ -56,18 +57,20 @@ public class MummyModel<T extends LivingEntity> extends BipedModel<T>
                 .addBox(-2.0F, 0.0F + yOffsetIn, 0.0F, 4.0F, 12.0F, 4.0F, modelSizeIn, true);
     }
 
+    @Nonnull
     protected Iterable<ModelRenderer> getHeadParts()
     {
         return ImmutableList.of(this.bipedHead);
     }
 
+    @Nonnull
     protected Iterable<ModelRenderer> getBodyParts()
     {
         return ImmutableList.of(this.bipedBody, this.bipedRightArm, this.bipedLeftArm, this.bipedRightLeg, this.bipedLeftLeg);
     }
 
     @Override
-    public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
+    public void setLivingAnimations(@Nonnull T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
     {
         super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
     }
@@ -76,7 +79,7 @@ public class MummyModel<T extends LivingEntity> extends BipedModel<T>
      * Sets this entity's model rotation angles
      */
     @Override
-    public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) 
+    public void setRotationAngles(@Nonnull T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
     {
         this.bipedHead.rotateAngleX = headPitch * ((float)Math.PI / 180F);
 
@@ -110,17 +113,21 @@ public class MummyModel<T extends LivingEntity> extends BipedModel<T>
         this.bipedRightArm.rotationPointX = MathHelper.cos(limbSwing * 0.6662F) * limbSwingAmountClamped - 6.0F;
     }
 
-    public void translateHand(HandSide sideIn, MatrixStack matrixStackIn) 
+    @Override
+    public void translateHand(@Nonnull HandSide sideIn, @Nonnull MatrixStack matrixStackIn)
     {
         this.getArmForSide(sideIn).translateRotate(matrixStackIn);
     }
 
-    protected ModelRenderer getArmForSide(HandSide side)
+    @Override
+    @Nonnull
+    protected ModelRenderer getArmForSide(@Nonnull HandSide side)
     {
         return side == HandSide.LEFT ? this.bipedLeftArm : this.bipedRightArm;
     }
 
     @Override
+    @Nonnull
     public ModelRenderer getModelHead()
     {
         return this.bipedHead;

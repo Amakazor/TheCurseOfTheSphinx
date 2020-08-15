@@ -9,8 +9,10 @@ import net.minecraftforge.fml.RegistryObject;
 import ourpoint.thecurseofthesphinx.init.TCOTSBlocks;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class TCOTSRecipeGenerator extends RecipeProvider
@@ -22,7 +24,7 @@ public class TCOTSRecipeGenerator extends RecipeProvider
     }
 
     @Override
-    protected void registerRecipes(Consumer<IFinishedRecipe> consumer)
+    protected void registerRecipes(@Nonnull Consumer<IFinishedRecipe> consumer)
     {
         registerBandageRecipes(consumer);
         registerArmorRecipes(consumer);
@@ -69,7 +71,7 @@ public class TCOTSRecipeGenerator extends RecipeProvider
                     .addIngredient(Ingredient.fromTag(collection.func_232937_a_("thecurseofthesphinx:bandage_block")))
                     .addIngredient(Ingredient.fromTag(collection.func_232937_a_(bandageDyePair.dye)))
                     .addCriterion("has_bandage_block", hasItem(TCOTSBlocks.BANDAGE_BLOCK.get()))
-                    .build(consumer, bandageDyePair.block.get().getRegistryName().toString().concat("_single"));
+                    .build(consumer, Objects.requireNonNull(bandageDyePair.block.get().getRegistryName()).toString().concat("_single"));
 
             ShapedRecipeBuilder.shapedRecipe(bandageDyePair.block.get(), 8)
                     .patternLine("xxx")
@@ -78,7 +80,7 @@ public class TCOTSRecipeGenerator extends RecipeProvider
                     .key('x', collection.func_232937_a_("thecurseofthesphinx:bandage_block"))
                     .key('d', collection.func_232937_a_(bandageDyePair.dye))
                     .addCriterion("has_bandage_block", hasItem(TCOTSBlocks.BANDAGE_BLOCK.get()))
-                    .build(consumer, bandageDyePair.block.get().getRegistryName().toString().concat("_multiple"));
+                    .build(consumer, Objects.requireNonNull(bandageDyePair.block.get().getRegistryName()).toString().concat("_multiple"));
         }
 
         ShapedRecipeBuilder.shapedRecipe((TCOTSBlocks.BANDAGE_BLOCK.get()))

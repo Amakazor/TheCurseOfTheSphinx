@@ -10,6 +10,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 
+import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public enum TCOTSArmorMaterial implements IArmorMaterial
@@ -60,11 +61,14 @@ public enum TCOTSArmorMaterial implements IArmorMaterial
         return this.enchantability;
     }
 
+    @Nonnull
     @Override
     public SoundEvent getSoundEvent()
     {
         return this.soundEvent;
     }
+
+    @Nonnull
 
     @Override
     public Ingredient getRepairMaterial()
@@ -73,6 +77,7 @@ public enum TCOTSArmorMaterial implements IArmorMaterial
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Nonnull
     @Override
     public String getName()
     {

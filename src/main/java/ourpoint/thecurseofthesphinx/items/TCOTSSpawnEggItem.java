@@ -15,6 +15,7 @@ import net.minecraftforge.common.util.NonNullSupplier;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,19 +25,13 @@ public class TCOTSSpawnEggItem extends SpawnEggItem
 
     private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 
-    protected static final List<TCOTSSpawnEggItem> UNADDED_EGGS = new ArrayList<TCOTSSpawnEggItem>();
+    protected static final List<TCOTSSpawnEggItem> UNADDED_EGGS = new ArrayList<>();
 
-    public TCOTSSpawnEggItem(final NonNullSupplier <?extends EntityType<?>> entityTypeSupplier, final int primaryColor, final int secondaryColor, final Item.Properties properties)
-    {
-        super(null, primaryColor, secondaryColor, properties);
-        this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
-        UNADDED_EGGS.add(this);
-    }
-
+    @SuppressWarnings ("ConstantConditions")
     public TCOTSSpawnEggItem(final RegistryObject<? extends EntityType<?>> entityTypeSupplier, final int primaryColor, final int secondaryColor, final Item.Properties properties)
     {
         super(null, primaryColor, secondaryColor, properties);
-        this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
+        this.entityTypeSupplier = Lazy.of(entityTypeSupplier);
         UNADDED_EGGS.add(this);
     }
 
@@ -58,6 +53,7 @@ public class TCOTSSpawnEggItem extends SpawnEggItem
 
         for (final SpawnEggItem spawnEgg : UNADDED_EGGS)
         {
+            assert EGGS != null;
             EGGS.put(spawnEgg.getType(null), spawnEgg);
             DispenserBlock.registerDispenseBehavior(spawnEgg, dispenseItemBehavior);
         }
@@ -65,6 +61,7 @@ public class TCOTSSpawnEggItem extends SpawnEggItem
     }
 
     @Override
+    @Nonnull
     public EntityType<?> getType(CompoundNBT compoundNBT)
     {
         return this.entityTypeSupplier.get();

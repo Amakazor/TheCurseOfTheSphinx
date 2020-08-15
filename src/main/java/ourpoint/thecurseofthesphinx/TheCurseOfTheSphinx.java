@@ -17,6 +17,7 @@ import ourpoint.thecurseofthesphinx.init.TCOTSEntityTypes;
 import ourpoint.thecurseofthesphinx.init.TCOTSInit;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 
+@SuppressWarnings ("deprecation")
 @Mod (TheCurseOfTheSphinx.MOD_ID)
 public class TheCurseOfTheSphinx
 {
