@@ -9,6 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.armor.TCOTSArmorMaterial;
+import ourpoint.thecurseofthesphinx.items.ScarabKeyItem;
 import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
 
 public class TCOTSItems
@@ -31,6 +32,15 @@ public class TCOTSItems
             () -> new Item(new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
     public static final RegistryObject<Item> SCARAB = ITEMS.register("scarab",
             () -> new Item(new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+
+    public static final RegistryObject<Item> SCARAB_KEY_EASY = ITEMS.register("scarab_key_easy",
+            () -> new ScarabKeyItem(new Item.Properties().group(TheCurseOfTheSphinx.TAB), 1));
+    public static final RegistryObject<Item> SCARAB_KEY_NORMAL = ITEMS.register("scarab_key_normal",
+            () -> new ScarabKeyItem(new Item.Properties().group(TheCurseOfTheSphinx.TAB), 2));
+    public static final RegistryObject<Item> SCARAB_KEY_HARD = ITEMS.register("scarab_key_hard",
+            () -> new ScarabKeyItem(new Item.Properties().group(TheCurseOfTheSphinx.TAB), 3));
+    public static final RegistryObject<Item> SCARAB_KEY_CURSED = ITEMS.register("scarab_key_cursed",
+            () -> new ScarabKeyItem(new Item.Properties().group(TheCurseOfTheSphinx.TAB), 4));
 
     //Block Items
         //Bandage Blocks

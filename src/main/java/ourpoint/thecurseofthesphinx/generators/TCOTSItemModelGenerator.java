@@ -1,9 +1,16 @@
 package ourpoint.thecurseofthesphinx.generators;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
+import ourpoint.thecurseofthesphinx.init.TCOTSItems;
+import ourpoint.thecurseofthesphinx.items.ScarabKeyItem;
+
+import java.util.Objects;
 
 public class TCOTSItemModelGenerator extends ItemModelProvider
 {
@@ -17,6 +24,7 @@ public class TCOTSItemModelGenerator extends ItemModelProvider
     protected void registerModels()
     {
         registerArmor();
+        registerScarabKeys();
     }
 
     private void registerArmor()
@@ -37,5 +45,24 @@ public class TCOTSItemModelGenerator extends ItemModelProvider
                 new ResourceLocation("item/generated"),
                 "layer0",
                 new ResourceLocation("thecurseofthesphinx", "item/bandage_boots"));
+    }
+
+    private void registerScarabKeys()
+    {
+        ImmutableList<String> scarabKeyItems = ImmutableList.of
+        (
+            Objects.requireNonNull(TCOTSItems.SCARAB_KEY_EASY.get().getRegistryName()).toString(),
+            Objects.requireNonNull(TCOTSItems.SCARAB_KEY_NORMAL.get().getRegistryName()).toString(),
+            Objects.requireNonNull(TCOTSItems.SCARAB_KEY_HARD.get().getRegistryName()).toString(),
+            Objects.requireNonNull(TCOTSItems.SCARAB_KEY_CURSED.get().getRegistryName()).toString()
+        );
+
+        for (String scarabKeyItem : scarabKeyItems)
+        {
+            singleTexture(scarabKeyItem,
+                    new ResourceLocation("item/generated"),
+                    "layer0",
+                    new ResourceLocation(new StringBuilder(scarabKeyItem).insert(scarabKeyItem.indexOf(":")+1,"item/").toString()));
+        }
     }
 }
