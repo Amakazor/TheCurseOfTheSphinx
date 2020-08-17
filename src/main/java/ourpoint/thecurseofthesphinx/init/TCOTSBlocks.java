@@ -49,4 +49,7 @@ public class TCOTSBlocks
             () -> new Block(AbstractBlock.Properties.create(Material.WOOL, MaterialColor.RED).hardnessAndResistance(0.8F).sound(SoundType.CLOTH)));
     public static final RegistryObject<Block> BANDAGE_BLOCK_BLACK = BLOCKS.register("bandage_block_black",
             () -> new Block(AbstractBlock.Properties.create(Material.WOOL, MaterialColor.BLACK).hardnessAndResistance(0.8F).sound(SoundType.CLOTH)));
+
+    public static final RegistryObject<Block> TOILET_PAPER_BLOCK = BLOCKS.register("toilet_paper_block",
+            () -> new Block((AbstractBlock.Properties.create(Material.WOOL, MaterialColor.SNOW).hardnessAndResistance(0.8F).sound(SoundType.CLOTH))));
 }

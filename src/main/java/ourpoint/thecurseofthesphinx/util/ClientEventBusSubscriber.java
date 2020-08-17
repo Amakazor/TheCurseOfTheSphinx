@@ -1,5 +1,8 @@
 package ourpoint.thecurseofthesphinx.util;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
@@ -21,6 +24,7 @@ public class ClientEventBusSubscriber
     {
         RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.MUMMY_ENTITY.get(), MummyRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.SCARAB_ENTITY.get(), ScarabRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.TOILET_PAPER_ENTITY.get(), renderManager -> new SpriteRenderer<>(renderManager, Minecraft.getInstance().getItemRenderer()));
     }
 
     @SubscribeEvent

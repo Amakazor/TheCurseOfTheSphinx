@@ -11,6 +11,7 @@ import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.armor.TCOTSArmorMaterial;
 import ourpoint.thecurseofthesphinx.items.ScarabKeyItem;
 import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
+import ourpoint.thecurseofthesphinx.items.ToiletPaperItem;
 
 public class TCOTSItems
 {
@@ -41,6 +42,9 @@ public class TCOTSItems
             () -> new ScarabKeyItem(new Item.Properties().group(TheCurseOfTheSphinx.TAB), 3));
     public static final RegistryObject<Item> SCARAB_KEY_CURSED = ITEMS.register("scarab_key_cursed",
             () -> new ScarabKeyItem(new Item.Properties().group(TheCurseOfTheSphinx.TAB), 4));
+
+    public static final RegistryObject<Item> TOILET_PAPER_ITEM = ITEMS.register("toilet_paper",
+            () -> new ToiletPaperItem(new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
 
     //Block Items
         //Bandage Blocks
@@ -78,6 +82,9 @@ public class TCOTSItems
             () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_RED.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
     public static final RegistryObject<Item> BANDAGE_BLOCK_BLACK_ITEM = ITEMS.register("bandage_block_black",
             () -> new BlockItem(TCOTSBlocks.BANDAGE_BLOCK_BLACK.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+
+    public static final RegistryObject<Item> TOILET_PAPER_BLOCK_ITEM = ITEMS.register("toilet_paper_block",
+            () -> new BlockItem(TCOTSBlocks.TOILET_PAPER_BLOCK.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
 
     //Tools
 

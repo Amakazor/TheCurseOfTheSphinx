@@ -22,6 +22,9 @@ public class TCOTSBlockstateGenerator extends BlockStateProvider
     protected void registerStatesAndModels()
     {
         generateBandageBlocks();
+
+        simpleBlock(TCOTSBlocks.TOILET_PAPER_BLOCK.get());
+        simpleBlockItem(TCOTSBlocks.TOILET_PAPER_BLOCK.get(), cubeAll(TCOTSBlocks.TOILET_PAPER_BLOCK.get()));
     }
     
     private void generateBandageBlocks()
