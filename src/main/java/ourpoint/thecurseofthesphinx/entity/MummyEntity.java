@@ -22,6 +22,7 @@ import net.minecraft.world.World;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 
 public class MummyEntity extends ZombieEntity
 {
@@ -29,6 +30,8 @@ public class MummyEntity extends ZombieEntity
     {
         super(type, worldIn);
         this.experienceValue = 8;
+        Arrays.fill(this.inventoryArmorDropChances, 0.0F);
+        Arrays.fill(this.inventoryHandsDropChances, 1.0F);
     }
 
     //basic parameters
@@ -80,6 +83,11 @@ public class MummyEntity extends ZombieEntity
         if (this.rand.nextFloat() < (this.world.getDifficulty() == Difficulty.HARD ? 0.5F : 0.25F))
         {
             this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STICK));
+        }
+
+        if (this.rand.nextFloat() < 0.01F)
+        {
+            this.setItemStackToSlot(EquipmentSlotType.OFFHAND, new ItemStack(TCOTSItems.TOILET_PAPER_ITEM.get()));
         }
 
         float difficulty_calculated = MathHelper.clamp((difficulty.getAdditionalDifficulty()-0.75F)/4.0F, 0.25F, 1.0F);
