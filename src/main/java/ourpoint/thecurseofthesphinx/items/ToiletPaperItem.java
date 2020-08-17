@@ -31,7 +31,7 @@ public class ToiletPaperItem extends Item
         {
             ToiletPaperEntity toiletPaperEntity = new ToiletPaperEntity(worldIn, playerIn);
             toiletPaperEntity.setItem(itemstack);
-            toiletPaperEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            toiletPaperEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.6F, 1.0F);
             worldIn.addEntity(toiletPaperEntity);
         }
 

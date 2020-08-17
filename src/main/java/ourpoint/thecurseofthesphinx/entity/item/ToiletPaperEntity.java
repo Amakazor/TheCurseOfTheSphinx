@@ -53,40 +53,15 @@ public class ToiletPaperEntity extends ProjectileItemEntity
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
-
-
-//    @Override
-//    protected void onImpact(@Nonnull RayTraceResult result)
-//    {
-//        super.onImpact(result);
-//        Entity entity = this.func_234616_v_();
-////        if (!this.world.isRemote && this.isAlive())
-////        {
-////            assert entity != null;
-////            TheCurseOfTheSphinx.LOGGER.debug(world.getBlockState(entity.getPosition()));
-////
-////            this.getEntityWorld().setBlockState(new BlockPos(this.getPosX(), this.getPosY(), this.getPosZ()), TCOTSBlocks.TOILET_PAPER_BLOCK.get().getDefaultState());
-////        }
-//
-//        this.setVelocity(this.getMotion().getX(), 0.0D, this.getMotion().getZ());
-//        TheCurseOfTheSphinx.LOGGER.debug(result.hitInfo);
-//        TheCurseOfTheSphinx.LOGGER.debug(result.getHitVec());
-//        TheCurseOfTheSphinx.LOGGER.debug(result.getType());
-//
-//        //this.remove();
-//    }
-
-    //protected void func_230299_a_;
-
     @Override
     protected void func_230299_a_(@Nonnull BlockRayTraceResult result)
     {
         Direction direction =  result.getFace();
 
         this.setVelocity(
-                (direction == Direction.EAST || direction == Direction.WEST) ? this.getMotion().getX() * -0.2D : this.getMotion().getX() * 0.75,
-                (direction == Direction.UP || direction == Direction.DOWN) ? this.getMotion().getY() * -0.2D : this.getMotion().getY() * 0.75,
-                (direction == Direction.NORTH || direction == Direction.SOUTH) ? this.getMotion().getZ() * -0.2D : this.getMotion().getZ() * 0.75);
+                (direction == Direction.EAST || direction == Direction.WEST) ? this.getMotion().getX() * -0.2D : this.getMotion().getX() * 0.6D,
+                (direction == Direction.UP || direction == Direction.DOWN) ? this.getMotion().getY() * -0.2D : this.getMotion().getY() * 0.6D,
+                (direction == Direction.NORTH || direction == Direction.SOUTH) ? this.getMotion().getZ() * -0.2D : this.getMotion().getZ() * 0.6D);
         if (this.getMotion().length() < 0.05D)
         {
             if (!this.world.isRemote && this.isAlive())
