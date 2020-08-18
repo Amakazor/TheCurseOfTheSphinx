@@ -69,11 +69,25 @@ public class MummyEntity extends ZombieEntity
     public void setChild(boolean childZombie)
     {}
 
+    //settings
     @Override
     public ILivingEntityData onInitialSpawn(@Nonnull IWorld worldIn, @Nonnull DifficultyInstance difficultyIn, @Nonnull SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag)
     {
         this.setEquipmentBasedOnDifficulty(difficultyIn);
         return spawnDataIn;
+    }
+
+    @Override
+    public void livingTick()
+    {
+
+        ItemStack itemStack =this.getItemStackFromSlot(EquipmentSlotType.HEAD);
+        if (this.isAlive() && this.shouldBurnInDay() && this.isInDaylight() && (itemStack.isEmpty() || itemStack.getItem() == TCOTSItems.BANDAGE_HELMET.get()))
+        {
+            this.setFire(8);
+        }
+
+        super.livingTick();
     }
 
     //equipment
