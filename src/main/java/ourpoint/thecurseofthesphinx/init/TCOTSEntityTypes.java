@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.entity.MummyEntity;
 import ourpoint.thecurseofthesphinx.entity.ScarabEntity;
+import ourpoint.thecurseofthesphinx.entity.SnakeScepterSnakeEntity;
 import ourpoint.thecurseofthesphinx.entity.item.ToiletPaperEntity;
 
 public class TCOTSEntityTypes
@@ -28,6 +29,11 @@ public class TCOTSEntityTypes
     public static final RegistryObject<EntityType<ToiletPaperEntity>> TOILET_PAPER_ENTITY = ENTITY_TYPES.register("toilet_paper",
             () -> EntityType.Builder.<ToiletPaperEntity>create(ToiletPaperEntity::new, EntityClassification.MISC)
                 .size(0.25F, 0.25F)
-                .build(new ResourceLocation(TheCurseOfTheSphinx.MOD_ID, "toilet_paper").toString())
-    );
+                .build(new ResourceLocation(TheCurseOfTheSphinx.MOD_ID, "toilet_paper").toString()));
+
+    public static final RegistryObject<EntityType<SnakeScepterSnakeEntity>> SNAKE_SCEPTER_SNAKE_ENTITY = ENTITY_TYPES.register("snake_scepter_snake",
+            () -> EntityType.Builder.<SnakeScepterSnakeEntity>create(SnakeScepterSnakeEntity::new, EntityClassification.MISC)
+                .size(0.5F, 5.0F)
+                .build(new ResourceLocation(TheCurseOfTheSphinx.MOD_ID, "snake_scepter_snake").toString()));
+
 }

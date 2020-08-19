@@ -3,6 +3,7 @@ package ourpoint.thecurseofthesphinx.entity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
@@ -94,10 +95,13 @@ public class MummyEntity extends ZombieEntity
     @Override
     protected void setEquipmentBasedOnDifficulty(@Nonnull DifficultyInstance difficulty)
     {
-        if (this.rand.nextFloat() < (this.world.getDifficulty() == Difficulty.HARD ? 0.5F : 0.25F))
-        {
-            this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STICK));
-        }
+//        if (this.rand.nextFloat() < (this.world.getDifficulty() == Difficulty.HARD ? 0.5F : 0.25F))
+//        {
+//            this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STICK));
+//        }
+        //
+
+        this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(TCOTSItems.SNAKE_SCEPTER.get()));
 
         if (this.rand.nextFloat() < 0.01F)
         {
@@ -157,6 +161,16 @@ public class MummyEntity extends ZombieEntity
         return flag;
     }
 
+    //AI
+
+
+    @Override
+    protected void registerGoals()
+    {
+        this.goalSelector.addGoal(1, new AttackWithScepterGoal(this));
+        super.registerGoals();
+    }
+
     //sound
     @Override
     protected SoundEvent getAmbientSound()
@@ -181,5 +195,27 @@ public class MummyEntity extends ZombieEntity
     protected SoundEvent getStepSound()
     {
         return SoundEvents.ENTITY_HUSK_STEP;
+    }
+
+    class AttackWithScepterGoal extends Goal
+    {
+        MobEntity entity;
+
+        AttackWithScepterGoal(MobEntity entity)
+        {
+            this.entity = entity;
+        }
+
+        @Override
+        public boolean shouldExecute()
+        {
+            return this.entity.getItemStackFromSlot(EquipmentSlotType.MAINHAND).getItem() == TCOTSItems.SNAKE_SCEPTER.get() && this.entity.getAttackTarget() != null && this.entity.getAttackTarget().isAlive();
+        }
+
+        @Override
+        public void startExecuting()
+        {
+            this.entity.getItemStackFromSlot(EquipmentSlotType.MAINHAND).getItem().onUse(this.entity.world, this.entity, this.entity.getItemStackFromSlot(EquipmentSlotType.MAINHAND), this.entity.getItemStackFromSlot(EquipmentSlotType.MAINHAND).getCount());
+        }
     }
 }

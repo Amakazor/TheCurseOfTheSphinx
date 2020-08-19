@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.armor.TCOTSArmorMaterial;
 import ourpoint.thecurseofthesphinx.items.ScarabKeyItem;
+import ourpoint.thecurseofthesphinx.items.SnakeScepterItem;
 import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
 import ourpoint.thecurseofthesphinx.items.ToiletPaperItem;
 
@@ -89,6 +90,8 @@ public class TCOTSItems
     //Tools
 
     //Weapons
+    public static final RegistryObject<Item> SNAKE_SCEPTER = ITEMS.register("snake_scepter",
+            () -> new SnakeScepterItem(new Item.Properties().group(TheCurseOfTheSphinx.TAB).maxStackSize(1)));
 
     //Armor
     public static final RegistryObject<ArmorItem> BANDAGE_HELMET = ITEMS.register("bandage_helmet",

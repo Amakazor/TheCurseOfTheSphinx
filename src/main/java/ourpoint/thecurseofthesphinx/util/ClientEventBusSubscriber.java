@@ -12,6 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.client.entity.render.MummyRenderer;
 import ourpoint.thecurseofthesphinx.client.entity.render.ScarabRenderer;
+import ourpoint.thecurseofthesphinx.client.entity.render.SnakeScepterSnakeRenderer;
 import ourpoint.thecurseofthesphinx.init.TCOTSEntityTypes;
 import ourpoint.thecurseofthesphinx.items.TCOTSSpawnEggItem;
 
@@ -24,6 +25,7 @@ public class ClientEventBusSubscriber
         RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.MUMMY_ENTITY.get(), MummyRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.SCARAB_ENTITY.get(), ScarabRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.TOILET_PAPER_ENTITY.get(), renderManager -> new SpriteRenderer<>(renderManager, Minecraft.getInstance().getItemRenderer()));
+        RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.SNAKE_SCEPTER_SNAKE_ENTITY.get(), SnakeScepterSnakeRenderer::new);
     }
 
     @SubscribeEvent
