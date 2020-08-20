@@ -33,7 +33,41 @@ public class SnakeScepterItem extends Item
     {
         if (!worldIn.isRemote)
         {
-            CompoundNBT COOLDOWN = stack.getOrCreateChildTag(TheCurseOfTheSphinx.MOD_ID + "cooldown");
+            double distance = 20.0D;
+            Vector3d startVector = livingEntityIn.getEyePosition(1.0F);
+            Vector3d lookVector = livingEntityIn.getLook(1.0F);
+            Vector3d endVector = startVector.add(lookVector.x * distance, lookVector.y * distance, lookVector.z * distance);
+            AxisAlignedBB axisalignedbb = livingEntityIn.getBoundingBox().expand(lookVector.scale(distance)).grow(1.0D, 1.0D, 1.0D);
+
+            EntityRayTraceResult entityraytraceresult = ProjectileHelper.rayTraceEntities(livingEntityIn, startVector, endVector, axisalignedbb, entity -> entity.getClassification(false) != EntityClassification.MISC, distance*distance);
+            BlockRayTraceResult blockRayTraceResult = worldIn.rayTraceBlocks(new RayTraceContext(startVector, endVector, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.ANY, null));
+
+            BlockPos castPosition = null;
+
+            Vector3d casterVector = livingEntityIn.getPositionVec();
+
+            if (entityraytraceresult != null && entityraytraceresult.getEntity().getDistanceSq(casterVector) < blockRayTraceResult.getPos().distanceSq(casterVector.getX(), casterVector.y, casterVector.z, true))
+            {
+                castPosition = entityraytraceresult.getEntity().getPosition();
+            }
+            else if(blockRayTraceResult.getType() != RayTraceResult.Type.MISS)
+            {
+                castPosition = blockRayTraceResult.getPos();
+            }
+
+            this.summonSnake(worldIn, livingEntityIn, castPosition, stack);
+
+            super.onUse(worldIn, livingEntityIn, stack, count);
+        }
+    }
+
+    public void summonSnake(@Nonnull World worldIn, @Nonnull LivingEntity livingEntityIn, BlockPos castPosition, @Nonnull ItemStack stack)
+    {
+        CompoundNBT COOLDOWN = stack.getOrCreateChildTag(TheCurseOfTheSphinx.MOD_ID + "cooldown");
+
+        if (castPosition != null && ((worldIn.getBlockState(castPosition.down()) != Blocks.AIR.getDefaultState() && worldIn.getBlockState(castPosition) == Blocks.AIR.getDefaultState()) || (worldIn.getBlockState(castPosition) != Blocks.AIR.getDefaultState() && worldIn.getBlockState(castPosition.up()) == Blocks.AIR.getDefaultState())))
+        {
+            TheCurseOfTheSphinx.LOGGER.debug(COOLDOWN.getInt(TheCurseOfTheSphinx.MOD_ID + "cooldown"));
 
             if (livingEntityIn instanceof PlayerEntity || COOLDOWN.getInt(TheCurseOfTheSphinx.MOD_ID + "cooldown") == 0)
             {
@@ -46,34 +80,7 @@ public class SnakeScepterItem extends Item
                     ((PlayerEntity) livingEntityIn).getCooldownTracker().setCooldown(this, COOLDOWN_TIME);
                 }
 
-                double distance = 20.0D;
-                Vector3d startVector = livingEntityIn.getEyePosition(1.0F);
-                Vector3d lookVector = livingEntityIn.getLook(1.0F);
-                Vector3d endVector = startVector.add(lookVector.x * distance, lookVector.y * distance, lookVector.z * distance);
-                AxisAlignedBB axisalignedbb = livingEntityIn.getBoundingBox().expand(lookVector.scale(distance)).grow(1.0D, 1.0D, 1.0D);
-
-                EntityRayTraceResult entityraytraceresult = ProjectileHelper.rayTraceEntities(livingEntityIn, startVector, endVector, axisalignedbb, entity -> entity.getClassification(false) != EntityClassification.MISC, distance*distance);
-                BlockRayTraceResult blockRayTraceResult = worldIn.rayTraceBlocks(new RayTraceContext(startVector, endVector, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.ANY, null));
-
-                BlockPos castPosition = null;
-
-                Vector3d casterVector = livingEntityIn.getPositionVec();
-
-                if (entityraytraceresult != null && entityraytraceresult.getEntity().getDistanceSq(casterVector) < blockRayTraceResult.getPos().distanceSq(casterVector.getX(), casterVector.y, casterVector.z, true))
-                {
-                    castPosition = entityraytraceresult.getEntity().getPosition();
-                }
-                else if(blockRayTraceResult.getType() != RayTraceResult.Type.MISS)
-                {
-                    castPosition = blockRayTraceResult.getPos();
-                }
-
-                if (castPosition != null && ((worldIn.getBlockState(castPosition.down()) != Blocks.AIR.getDefaultState() && worldIn.getBlockState(castPosition) == Blocks.AIR.getDefaultState()) || (worldIn.getBlockState(castPosition) != Blocks.AIR.getDefaultState() && worldIn.getBlockState(castPosition.up()) == Blocks.AIR.getDefaultState())))
-                {
-                    worldIn.addEntity(new SnakeScepterSnakeEntity(worldIn, castPosition, 10, livingEntityIn));
-                }
-
-                super.onUse(worldIn, livingEntityIn, stack, count);
+                worldIn.addEntity(new SnakeScepterSnakeEntity(worldIn, castPosition, 10, livingEntityIn));
             }
         }
     }
@@ -89,13 +96,17 @@ public class SnakeScepterItem extends Item
     @Override
     public void inventoryTick(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
     {
+        this.decrementCooldown(stack);
+        super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
+    }
+
+    public void decrementCooldown(ItemStack stack)
+    {
         CompoundNBT COOLDOWN = stack.getOrCreateChildTag(TheCurseOfTheSphinx.MOD_ID + "cooldown");
         int cooldown = COOLDOWN.getInt(TheCurseOfTheSphinx.MOD_ID + "cooldown");
         if (cooldown > 0)
         {
             COOLDOWN.putInt(TheCurseOfTheSphinx.MOD_ID + "cooldown", --cooldown);
         }
-
-        super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
     }
 }
