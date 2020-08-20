@@ -33,7 +33,7 @@ public class TCOTSEntityTypes
 
     public static final RegistryObject<EntityType<SnakeScepterSnakeEntity>> SNAKE_SCEPTER_SNAKE_ENTITY = ENTITY_TYPES.register("snake_scepter_snake",
             () -> EntityType.Builder.<SnakeScepterSnakeEntity>create(SnakeScepterSnakeEntity::new, EntityClassification.MISC)
-                .size(0.5F, 5.0F)
+                .size(0.6F, 4.0F)
                 .build(new ResourceLocation(TheCurseOfTheSphinx.MOD_ID, "snake_scepter_snake").toString()));
 
 }

@@ -1,15 +1,14 @@
 package ourpoint.thecurseofthesphinx.items;
 
 import net.minecraft.block.Blocks;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
@@ -22,6 +21,8 @@ import javax.annotation.Nonnull;
 
 public class SnakeScepterItem extends Item
 {
+    public static final int COOLDOWN_TIME = 20;
+
     public SnakeScepterItem(Properties properties)
     {
         super(properties);
@@ -33,38 +34,43 @@ public class SnakeScepterItem extends Item
         if (!worldIn.isRemote)
         {
             CompoundNBT COOLDOWN = stack.getOrCreateChildTag(TheCurseOfTheSphinx.MOD_ID + "cooldown");
-            int cooldown = COOLDOWN.getInt(TheCurseOfTheSphinx.MOD_ID + "cooldown");
 
-            if (cooldown == 0)
+            if (livingEntityIn instanceof PlayerEntity || COOLDOWN.getInt(TheCurseOfTheSphinx.MOD_ID + "cooldown") == 0)
             {
-                COOLDOWN.putInt(TheCurseOfTheSphinx.MOD_ID + "cooldown", 40);
-
-                double d0 = 20.0D;
-                Vector3d vector3d = livingEntityIn.getEyePosition(1.0F);
-                Vector3d vector3d1 = livingEntityIn.getLook(1.0F);
-                Vector3d vector3d2 = vector3d.add(vector3d1.x * d0, vector3d1.y * d0, vector3d1.z * d0);
-                AxisAlignedBB axisalignedbb = livingEntityIn.getBoundingBox().expand(vector3d1.scale(d0)).grow(1.0D, 1.0D, 1.0D);
-                EntityRayTraceResult entityraytraceresult = ProjectileHelper.rayTraceEntities(livingEntityIn, vector3d, vector3d2, axisalignedbb, null, d0*d0);
-
-                BlockPos blockPos;
-
-                TheCurseOfTheSphinx.LOGGER.debug("USED");
-                if (entityraytraceresult != null)
+                if (!(livingEntityIn instanceof PlayerEntity))
                 {
-                    blockPos = entityraytraceresult.getEntity().getPosition();
+                    COOLDOWN.putInt(TheCurseOfTheSphinx.MOD_ID + "cooldown", COOLDOWN_TIME);
                 }
                 else
                 {
-                    blockPos = worldIn.rayTraceBlocks(new RayTraceContext(vector3d, vector3d2,
-                            RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.ANY, null)).getPos();
+                    ((PlayerEntity) livingEntityIn).getCooldownTracker().setCooldown(this, COOLDOWN_TIME);
                 }
 
-                TheCurseOfTheSphinx.LOGGER.debug(blockPos);
+                double distance = 20.0D;
+                Vector3d startVector = livingEntityIn.getEyePosition(1.0F);
+                Vector3d lookVector = livingEntityIn.getLook(1.0F);
+                Vector3d endVector = startVector.add(lookVector.x * distance, lookVector.y * distance, lookVector.z * distance);
+                AxisAlignedBB axisalignedbb = livingEntityIn.getBoundingBox().expand(lookVector.scale(distance)).grow(1.0D, 1.0D, 1.0D);
 
-                if (worldIn.getBlockState(blockPos) == Blocks.AIR.getDefaultState() || worldIn.getBlockState(blockPos.up()) == Blocks.AIR.getDefaultState())
+                EntityRayTraceResult entityraytraceresult = ProjectileHelper.rayTraceEntities(livingEntityIn, startVector, endVector, axisalignedbb, entity -> entity.getClassification(false) != EntityClassification.MISC, distance*distance);
+                BlockRayTraceResult blockRayTraceResult = worldIn.rayTraceBlocks(new RayTraceContext(startVector, endVector, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.ANY, null));
+
+                BlockPos castPosition = null;
+
+                Vector3d casterVector = livingEntityIn.getPositionVec();
+
+                if (entityraytraceresult != null && entityraytraceresult.getEntity().getDistanceSq(casterVector) < blockRayTraceResult.getPos().distanceSq(casterVector.getX(), casterVector.y, casterVector.z, true))
                 {
-                    Minecraft.getInstance().particles.addParticle(ParticleTypes.CRIT, blockPos.getX()+0.5D, blockPos.getY(), blockPos.getZ()+0.5D, 0.0D, 0.2D, 0.0D);
-                    worldIn.addEntity(new SnakeScepterSnakeEntity(worldIn, blockPos, 10, livingEntityIn));
+                    castPosition = entityraytraceresult.getEntity().getPosition();
+                }
+                else if(blockRayTraceResult.getType() != RayTraceResult.Type.MISS)
+                {
+                    castPosition = blockRayTraceResult.getPos();
+                }
+
+                if (castPosition != null && ((worldIn.getBlockState(castPosition.down()) != Blocks.AIR.getDefaultState() && worldIn.getBlockState(castPosition) == Blocks.AIR.getDefaultState()) || (worldIn.getBlockState(castPosition) != Blocks.AIR.getDefaultState() && worldIn.getBlockState(castPosition.up()) == Blocks.AIR.getDefaultState())))
+                {
+                    worldIn.addEntity(new SnakeScepterSnakeEntity(worldIn, castPosition, 10, livingEntityIn));
                 }
 
                 super.onUse(worldIn, livingEntityIn, stack, count);

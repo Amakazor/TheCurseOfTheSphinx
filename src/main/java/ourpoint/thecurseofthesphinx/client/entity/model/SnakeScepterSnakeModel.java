@@ -20,7 +20,7 @@ public class SnakeScepterSnakeModel<T extends Entity> extends SegmentedModel<T>
         textureHeight = 128;
 
         snakeBody = new ModelRenderer(this);
-        snakeBody.setRotationPoint(0.0F, 24.0F, 0.0F);
+        snakeBody.setRotationPoint(0.0F, 0.0F, 0.0F);
         snakeBody.setTextureOffset(0, 0).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 64.0F, 8.0F, 0.0F, false);
     }
 
@@ -35,11 +35,5 @@ public class SnakeScepterSnakeModel<T extends Entity> extends SegmentedModel<T>
     public void setRotationAngles(@Nonnull T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
     {
 
-    }
-
-    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
     }
 }
