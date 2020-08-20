@@ -38,6 +38,6 @@ public class MoveToToiletPaperGoal extends MoveToBlockGoal
     @Override
     public boolean shouldExecute()
     {
-        return super.shouldExecute() && this.creature instanceof CatEntity && !this.creature.isSleeping();
+        return super.shouldExecute() && !this.creature.isSleeping();
     }
 }
