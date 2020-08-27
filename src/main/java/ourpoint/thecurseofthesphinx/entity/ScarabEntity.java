@@ -17,6 +17,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.Tags;
 
@@ -38,10 +39,19 @@ public class ScarabEntity extends AnimalEntity
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes()
     {
-        // func_233666_p_ => registerAttributes
-        return MobEntity.func_233666_p_()
+        return MobEntity.registerAttributes()
                 .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.4D);
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.4D)
+                .createMutableAttribute(Attributes.FOLLOW_RANGE, 0.0D);
+
+    }
+
+    @Nullable
+    @Override
+    public AgeableEntity func_241840_a(@Nonnull ServerWorld p_241840_1_, @Nonnull AgeableEntity p_241840_2_)
+    {
+        // func_241840_a => prolly createChild()
+        return null;
     }
 
     @Override
@@ -50,13 +60,6 @@ public class ScarabEntity extends AnimalEntity
         super.registerData();
         this.dataManager.register(BURYING, false);
         this.dataManager.register(BURYING_TIME, 0);
-    }
-
-    @Nullable
-    @Override
-    public AgeableEntity createChild(@Nonnull AgeableEntity other)
-    {
-        return null;
     }
 
     @Nonnull

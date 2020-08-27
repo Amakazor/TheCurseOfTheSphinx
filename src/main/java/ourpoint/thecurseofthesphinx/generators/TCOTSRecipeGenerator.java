@@ -4,10 +4,12 @@ import net.minecraft.block.Block;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.tags.TagRegistry;
+import net.minecraft.tags.ITag;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.RegistryObject;
 import ourpoint.thecurseofthesphinx.init.TCOTSBlocks;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
+import ourpoint.thecurseofthesphinx.init.TCOTSTags;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -35,41 +37,39 @@ public class TCOTSRecipeGenerator extends RecipeProvider
         class BandageDyePair
         {
             public final RegistryObject<Block> block;
-            public final String dye;
+            public final ITag<Item> dye;
             
-            BandageDyePair(RegistryObject<Block> blockIn, String dyeIn)
+            BandageDyePair(RegistryObject<Block> blockIn, ITag<Item> dyeIn)
             {
                 this.block = blockIn;
                 this.dye = dyeIn;
             }
         }
-        
-        TagRegistry<Item> collection = new TagRegistry<>();
-        
+
         List<BandageDyePair> bandage_blocks = new ArrayList<>();
 
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_WHITE, "forge:dyes/white"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_ORANGE, "forge:dyes/orange"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_MAGENTA, "forge:dyes/magenta"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_LIGHT_BLUE, "forge:dyes/light_blue"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_YELLOW, "forge:dyes/yellow"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_LIME, "forge:dyes/lime"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_PINK, "forge:dyes/pink"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_GRAY, "forge:dyes/gray"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_LIGHT_GRAY, "forge:dyes/light_gray"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_CYAN, "forge:dyes/cyan"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_PURPLE, "forge:dyes/purple"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_BLUE, "forge:dyes/blue"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_BROWN, "forge:dyes/brown"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_GREEN, "forge:dyes/green"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_RED, "forge:dyes/red"));
-        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_BLACK, "forge:dyes/black"));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_WHITE, Tags.Items.DYES_WHITE));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_ORANGE, Tags.Items.DYES_ORANGE));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_MAGENTA, Tags.Items.DYES_MAGENTA));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_LIGHT_BLUE, Tags.Items.DYES_LIGHT_BLUE));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_YELLOW, Tags.Items.DYES_YELLOW));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_LIME, Tags.Items.DYES_LIME));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_PINK, Tags.Items.DYES_PINK));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_GRAY, Tags.Items.DYES_GRAY));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_LIGHT_GRAY, Tags.Items.DYES_LIGHT_GRAY));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_CYAN, Tags.Items.DYES_CYAN));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_PURPLE, Tags.Items.DYES_PURPLE));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_BLUE, Tags.Items.DYES_BLUE));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_BROWN, Tags.Items.DYES_BROWN));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_GREEN, Tags.Items.DYES_GREEN));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_RED, Tags.Items.DYES_RED));
+        bandage_blocks.add(new BandageDyePair(TCOTSBlocks.BANDAGE_BLOCK_BLACK, Tags.Items.DYES_BLACK));
 
         for (BandageDyePair bandageDyePair:bandage_blocks)
         {
             ShapelessRecipeBuilder.shapelessRecipe(bandageDyePair.block.get())
-                    .addIngredient(Ingredient.fromTag(collection.func_232937_a_("thecurseofthesphinx:bandage_block")))
-                    .addIngredient(Ingredient.fromTag(collection.func_232937_a_(bandageDyePair.dye)))
+                    .addIngredient(Ingredient.fromTag(TCOTSTags.Items.BANDAGE_BLOCK))
+                    .addIngredient(Ingredient.fromTag(bandageDyePair.dye))
                     .addCriterion("has_bandage_block", hasItem(TCOTSBlocks.BANDAGE_BLOCK.get()))
                     .build(consumer, Objects.requireNonNull(bandageDyePair.block.get().getRegistryName()).toString().concat("_single"));
 
@@ -77,8 +77,8 @@ public class TCOTSRecipeGenerator extends RecipeProvider
                     .patternLine("xxx")
                     .patternLine("xdx")
                     .patternLine("xxx")
-                    .key('x', collection.func_232937_a_("thecurseofthesphinx:bandage_block"))
-                    .key('d', collection.func_232937_a_(bandageDyePair.dye))
+                    .key('x', TCOTSTags.Items.BANDAGE_BLOCK)
+                    .key('d', bandageDyePair.dye)
                     .addCriterion("has_bandage_block", hasItem(TCOTSBlocks.BANDAGE_BLOCK.get()))
                     .build(consumer, Objects.requireNonNull(bandageDyePair.block.get().getRegistryName()).toString().concat("_multiple"));
         }

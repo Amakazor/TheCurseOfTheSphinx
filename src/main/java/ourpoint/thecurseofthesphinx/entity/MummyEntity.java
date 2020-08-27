@@ -21,7 +21,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 import ourpoint.thecurseofthesphinx.items.SnakeScepterItem;
@@ -76,7 +76,7 @@ public class MummyEntity extends ZombieEntity
 
     //settings
     @Override
-    public ILivingEntityData onInitialSpawn(@Nonnull IWorld worldIn, @Nonnull DifficultyInstance difficultyIn, @Nonnull SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag)
+    public ILivingEntityData onInitialSpawn(@Nonnull IServerWorld worldIn, @Nonnull DifficultyInstance difficultyIn, @Nonnull SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag)
     {
         this.setEquipmentBasedOnDifficulty(difficultyIn);
         return spawnDataIn;
