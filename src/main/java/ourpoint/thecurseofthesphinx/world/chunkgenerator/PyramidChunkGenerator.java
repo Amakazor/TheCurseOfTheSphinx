@@ -1,4 +1,4 @@
-package ourpoint.thecurseofthesphinx.world.chunk_generator;
+package ourpoint.thecurseofthesphinx.world.chunkgenerator;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

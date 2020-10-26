@@ -3,7 +3,7 @@ package ourpoint.thecurseofthesphinx.init;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
-import ourpoint.thecurseofthesphinx.world.chunk_generator.PyramidChunkGenerator;
+import ourpoint.thecurseofthesphinx.world.chunkgenerator.PyramidChunkGenerator;
 
 public class TCOTSChunkGenerator
 {
