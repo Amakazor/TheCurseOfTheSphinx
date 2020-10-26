@@ -20,7 +20,7 @@ public class TCOTSEntitySpawn
                 .forEach(biome -> {
                     makeSpawnersMapMutable(biome);
                     addMobSpawn(biome, EntityClassification.MONSTER, new MobSpawnInfo.Spawners(TCOTSEntityTypes.MUMMY_ENTITY.get(), 30, 1, 1));
-                    addMobSpawn(biome, EntityClassification.CREATURE, new MobSpawnInfo.Spawners(TCOTSEntityTypes.SCARAB_ENTITY.get(), 20, 2, 4));
+                    addMobSpawn(biome, EntityClassification.CREATURE, new MobSpawnInfo.Spawners(TCOTSEntityTypes.SCARAB_ENTITY.get(), 40, 2, 4));
         });
     }
 
