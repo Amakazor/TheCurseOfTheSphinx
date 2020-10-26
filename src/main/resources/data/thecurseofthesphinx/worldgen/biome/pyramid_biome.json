@@ -1,0 +1,33 @@
+{
+  "scale": 0.05,
+  "surface_builder": "minecraft:grass",
+  "carvers": {
+    "air": [
+    ]
+  },
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "sky_color": 7907327,
+    "fog_color": 12638463,
+    "water_color": 4159204,
+    "water_fog_color": 329011
+  },
+  "features": [
+  ],
+  "starts": [
+  ],
+  "spawners": {
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": true,
+  "precipitation": "rain",
+  "temperature": 1,
+  "downfall": 0.0,
+  "category": "plains",
+  "depth": 0.125
+}

@@ -1,0 +1,14 @@
+{
+  "type": "thecurseofthesphinx:pyramid",
+  "generator": {
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "thecurseofthesphinx:pyramid_biome"
+    },
+    "type": "thecurseofthesphinx:pyramid_chunk_generator",
+    "structures": {
+      "structures": {
+      }
+    }
+  }
+}

@@ -24,5 +24,7 @@ public class TCOTSInit
         {
             register.register(bus);
         }
+
+        TCOTSChunkGenerator.registerChunkGenerator();
     }
 }
