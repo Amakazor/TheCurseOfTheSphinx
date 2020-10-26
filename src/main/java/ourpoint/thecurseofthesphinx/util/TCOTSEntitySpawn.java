@@ -28,16 +28,16 @@ public class TCOTSEntitySpawn
 
     public static void addMobSpawn(Biome biome, EntityClassification classification, MobSpawnInfo.Spawners spawner)
     {
-        List<MobSpawnInfo.Spawners> spawners = new ArrayList<>(biome.func_242433_b().field_242554_e.get(classification));
+        List<MobSpawnInfo.Spawners> spawners = new ArrayList<>(biome.getMobSpawnInfo().spawners.get(classification));
         spawners.add(spawner);
-        biome.func_242433_b().field_242554_e.put(classification, spawners);
+        biome.getMobSpawnInfo().spawners.put(classification, spawners);
     }
 
     public static void makeSpawnersMapMutable(Biome biome)
     {
-        if (biome.func_242433_b().field_242554_e instanceof ImmutableMap)
+        if (biome.getMobSpawnInfo().spawners instanceof ImmutableMap)
         {
-            biome.func_242433_b().field_242554_e = new HashMap<>(biome.func_242433_b().field_242554_e);
+            biome.getMobSpawnInfo().spawners = new HashMap<>(biome.getMobSpawnInfo().spawners);
         }
     }
 }
