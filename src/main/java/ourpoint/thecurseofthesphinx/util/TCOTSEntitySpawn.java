@@ -21,7 +21,7 @@ public class TCOTSEntitySpawn
                 .forEach(biome -> {
                     TheCurseOfTheSphinx.LOGGER.debug("Adding spawns for" + biome.toString());
                     makeSpawnersMapMutable(biome);
-                    addMobSpawn(biome, EntityClassification.MONSTER, new MobSpawnInfo.Spawners(TCOTSEntityTypes.MUMMY_ENTITY.get(), 1000, 1, 1));
+                    addMobSpawn(biome, EntityClassification.MONSTER, new MobSpawnInfo.Spawners(TCOTSEntityTypes.MUMMY_ENTITY.get(), 20, 1, 1));
                     addMobSpawn(biome, EntityClassification.CREATURE, new MobSpawnInfo.Spawners(TCOTSEntityTypes.SCARAB_ENTITY.get(), 40, 2, 4));
         });
     }
