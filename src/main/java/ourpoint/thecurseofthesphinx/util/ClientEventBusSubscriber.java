@@ -27,16 +27,4 @@ public class ClientEventBusSubscriber
         RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.TOILET_PAPER_ENTITY.get(), renderManager -> new SpriteRenderer<>(renderManager, Minecraft.getInstance().getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(TCOTSEntityTypes.SNAKE_SCEPTER_SNAKE_ENTITY.get(), SnakeScepterSnakeRenderer::new);
     }
-
-    @SubscribeEvent
-    public static void onLoadSpawns (FMLClientSetupEvent event)
-    {
-        TCOTSEntitySpawn.spawnMobs();
-    }
-
-    @SubscribeEvent
-    public static void onRegisterEntities(final RegistryEvent.Register<EntityType<?>> event)
-    {
-        TCOTSSpawnEggItem.initSpawnEggs();
-    }
 }

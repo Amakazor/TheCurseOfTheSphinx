@@ -8,10 +8,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +23,6 @@ import ourpoint.thecurseofthesphinx.init.TCOTSEntityTypes;
 import ourpoint.thecurseofthesphinx.init.TCOTSInit;
 import ourpoint.thecurseofthesphinx.init.TCOTSItems;
 
-@SuppressWarnings ("deprecation")
 @Mod (TheCurseOfTheSphinx.MOD_ID)
 public class TheCurseOfTheSphinx
 {
@@ -32,16 +31,14 @@ public class TheCurseOfTheSphinx
 
     public TheCurseOfTheSphinx()
     {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        TCOTSInit.Init(FMLJavaModLoadingContext.get().getModEventBus());
-
+        modEventBus.addListener(this::setup);
+        TCOTSInit.Init(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    @SuppressWarnings ("deprecation")
     private void setup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("The Sphinx is watching");
@@ -49,11 +46,6 @@ public class TheCurseOfTheSphinx
                 ()-> GlobalEntityTypeAttributes.put(TCOTSEntityTypes.MUMMY_ENTITY.get(), MummyEntity.setCustomAttributes().create()));
         DeferredWorkQueue.runLater(
                 ()-> GlobalEntityTypeAttributes.put(TCOTSEntityTypes.SCARAB_ENTITY.get(), ScarabEntity.setCustomAttributes().create()));
-    }
-
-    private void doClientStuff(final FMLClientSetupEvent event)
-    {
-        //do something that can only be done on the client
     }
 
     //Creative Tab
@@ -76,14 +68,4 @@ public class TheCurseOfTheSphinx
             ((CatEntity) entity).goalSelector.addGoal(4, new MoveToToiletPaperGoal((CatEntity)entity, 1.2F, 5));
         }
     }
-
-   /* private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-        //some example code to dispatch IMC to another mod);
-    }*/
-
-    /*private void processIMC(final InterModProcessEvent event)
-    {
-        //some example code to receive and process InterModComms from other mods
-    }*/
 }
