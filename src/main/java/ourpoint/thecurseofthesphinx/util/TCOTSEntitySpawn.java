@@ -1,43 +1,30 @@
 package ourpoint.thecurseofthesphinx.util;
 
-import com.google.common.collect.ImmutableMap;
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
 import ourpoint.thecurseofthesphinx.init.TCOTSEntityTypes;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
+@Mod.EventBusSubscriber(modid = TheCurseOfTheSphinx.MOD_ID)
 public class TCOTSEntitySpawn
 {
-    public static void spawnMobs()
+    @SubscribeEvent
+    public static void onBiomeLoaded(final BiomeLoadingEvent event)
     {
-        ForgeRegistries.BIOMES.getValues().stream()
-                .filter(biome -> biome.getCategory() == Biome.Category.DESERT)
-                .forEach(biome -> {
-                    TheCurseOfTheSphinx.LOGGER.debug("Adding spawns for" + biome.toString());
-                    makeSpawnersMapMutable(biome);
-                    addMobSpawn(biome, EntityClassification.MONSTER, new MobSpawnInfo.Spawners(TCOTSEntityTypes.MUMMY_ENTITY.get(), 20, 1, 1));
-                    addMobSpawn(biome, EntityClassification.CREATURE, new MobSpawnInfo.Spawners(TCOTSEntityTypes.SCARAB_ENTITY.get(), 40, 2, 4));
-        });
-    }
-
-    public static void addMobSpawn(Biome biome, EntityClassification classification, MobSpawnInfo.Spawners spawner)
-    {
-        List<MobSpawnInfo.Spawners> spawners = new ArrayList<>(biome.getMobSpawnInfo().spawners.get(classification));
-        spawners.add(spawner);
-        biome.getMobSpawnInfo().spawners.put(classification, spawners);
-    }
-
-    public static void makeSpawnersMapMutable(Biome biome)
-    {
-        if (biome.getMobSpawnInfo().spawners instanceof ImmutableMap)
+        if (event.getCategory() == Biome.Category.DESERT)
         {
-            biome.getMobSpawnInfo().spawners = new HashMap<>(biome.getMobSpawnInfo().spawners);
+            MobSpawnInfo.Spawners mummySpawn = new MobSpawnInfo.Spawners(TCOTSEntityTypes.MUMMY_ENTITY.get(), 20, 1, 1);
+            MobSpawnInfo.Spawners scarabSpawn = new MobSpawnInfo.Spawners(TCOTSEntityTypes.SCARAB_ENTITY.get(), 40, 2, 6);
+
+            event.getSpawns()
+                    .withSpawner(EntityClassification.MONSTER, mummySpawn)
+                    .withSpawner(EntityClassification.CREATURE, scarabSpawn);
         }
     }
 }

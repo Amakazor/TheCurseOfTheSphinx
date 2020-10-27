@@ -3,7 +3,7 @@ package ourpoint.thecurseofthesphinx.generators;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ExistingFileHelper;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.RegistryObject;
 import ourpoint.thecurseofthesphinx.init.TCOTSBlocks;
 

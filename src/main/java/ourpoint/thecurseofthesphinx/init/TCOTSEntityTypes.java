@@ -3,6 +3,8 @@ package ourpoint.thecurseofthesphinx.init;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -11,6 +13,7 @@ import ourpoint.thecurseofthesphinx.entity.MummyEntity;
 import ourpoint.thecurseofthesphinx.entity.ScarabEntity;
 import ourpoint.thecurseofthesphinx.entity.SnakeScepterSnakeEntity;
 import ourpoint.thecurseofthesphinx.entity.item.ToiletPaperEntity;
+import ourpoint.thecurseofthesphinx.util.TCOTSEntitySpawn;
 
 public class TCOTSEntityTypes
 {

@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[33,)"
+loaderVersion = "[34,)"
 license = "GNU LGPLv3"
 issueTrackerURL = "https://github.com/Amakazor/TheCurseOfTheSphinx/issues"
 
@@ -18,13 +18,13 @@ A mod that adds a couple new items, blocks and a boss fight with the Sphinx
 [[dependencies.thecurseofthesphinx]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.16.2]"
+versionRange = "[1.16.3]"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thecurseofthesphinx]]
 modId = "forge"
 mandatory = true
-versionRange = "[33.0.22,)"
+versionRange = "[34.1.33,)"
 ordering = "AFTER"
 side = "BOTH"
