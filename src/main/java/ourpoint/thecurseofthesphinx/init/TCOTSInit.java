@@ -14,6 +14,7 @@ public class TCOTSInit
 
         Registries.add(TCOTSBlocks.BLOCKS);
         Registries.add(TCOTSItems.ITEMS);
+        Registries.add(TCOTSTileEntities.TILE_ENTITIES);
         Registries.add(TCOTSEntityTypes.ENTITY_TYPES);
         Registries.add(TCOTSBiomes.BIOMES);
         Registries.add(TCOTSStructures.STRUCTURES);
@@ -26,5 +27,6 @@ public class TCOTSInit
         }
 
         TCOTSChunkGenerator.registerChunkGenerator();
+        TCOTSDimensions.RegisterDimensions();
     }
 }

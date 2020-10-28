@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "thecurseofthesphinx:block/pyramid_portal_block"
+    }
+  }
+}

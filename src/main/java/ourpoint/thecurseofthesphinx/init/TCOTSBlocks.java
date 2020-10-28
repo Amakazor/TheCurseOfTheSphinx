@@ -9,6 +9,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import ourpoint.thecurseofthesphinx.TheCurseOfTheSphinx;
+import ourpoint.thecurseofthesphinx.blocks.PyramidPortal;
 
 public class TCOTSBlocks
 {
@@ -52,4 +53,7 @@ public class TCOTSBlocks
 
     public static final RegistryObject<Block> TOILET_PAPER_BLOCK = BLOCKS.register("toilet_paper_block",
             () -> new Block((AbstractBlock.Properties.create(Material.WOOL, MaterialColor.SNOW).hardnessAndResistance(0.8F).sound(SoundType.CLOTH))));
+
+    public static final RegistryObject<Block> PYRAMID_PORTAL_BLOCK = BLOCKS.register("pyramid_portal_block",
+            () -> new PyramidPortal(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(0.8F).sound(SoundType.STONE)));
 }

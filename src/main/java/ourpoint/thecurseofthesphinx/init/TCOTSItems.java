@@ -87,6 +87,9 @@ public class TCOTSItems
     public static final RegistryObject<Item> TOILET_PAPER_BLOCK_ITEM = ITEMS.register("toilet_paper_block",
             () -> new BlockItem(TCOTSBlocks.TOILET_PAPER_BLOCK.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
 
+    public static final RegistryObject<Item> PYRAMID_PORTAL_BLOCK_ITEM = ITEMS.register("pyramid_portal_block",
+            () -> new BlockItem(TCOTSBlocks.PYRAMID_PORTAL_BLOCK.get(), new Item.Properties().group(TheCurseOfTheSphinx.TAB)));
+
     //Tools
 
     //Weapons
